@@ -26,12 +26,18 @@ There will be two scripts for this project
 * `game.js` will handle the display and mechanics of the game.
 * `piece.js` will deal with generating each piece and the logic they follow.
 
+## Wireframe
+
+![](https://raw.githubusercontent.com/10KD/FSP/master/tetris_reloaded.jpg)
+
 ## Timeline
 
 **Day 1**
-get webpack set up, wrtie an entry file. figure out which libraries to use. create package.json
+
+get webpack set up, write an entry file. figure out which libraries to use. create package.json
 
 **Day 2**
+
 get a piece to display on canvas and be able to move it around
 
 **Day 3**
@@ -41,3 +47,8 @@ finish piece logic and wrap up game logic
 **Day 4**
 
 finish game logic, spend time on css making things fun
+
+## Bonus
+enable mousepad controls
+alternate game modes
+compete against AI
