@@ -49,6 +49,9 @@ finish piece logic and wrap up game logic
 finish game logic, spend time on css making things fun
 
 ## Bonus
+
 enable mousepad controls
+
 alternate game modes
+
 compete against AI
