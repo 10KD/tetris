@@ -35,10 +35,16 @@ There will be two scripts for this project
 **Day 1**
 
 get webpack set up, write an entry file. figure out which libraries to use. create package.json
+determine whether to rotate pieces dynamically or hard code each position.
+create canvas and display pieces on it.
+
 
 **Day 2**
 
-get a piece to display on canvas and be able to move it around
+Write a update function that conitinually updates the canvas. Use `requestAnimationFrame()`.
+Determine the speed at which the pieces will drop and ramp up that speed by measuring the time between frames and
+increasing the y axis of the piece when time exceeds the desired interval between each drop.
+Enable keyboard controls using `EventListener` with keyboard keycodes. 
 
 **Day 3**
 
