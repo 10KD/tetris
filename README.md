@@ -41,7 +41,7 @@ create canvas and display pieces on it.
 
 **Day 2**
 
-Write a update function that conitinually updates the canvas. Use `requestAnimationFrame()`.
+Write a update function that continually updates the canvas. Use `requestAnimationFrame()`.
 Determine the speed at which the pieces will drop and ramp up that speed by measuring the time between frames and
 increasing the y axis of the piece when time exceeds the desired interval between each drop.
 Enable keyboard controls using `EventListener` with keyboard keycodes.
