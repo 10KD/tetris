@@ -3,8 +3,7 @@ const context = canvas.getContext("2d");
 
 
 context.scale(30, 30);
-context.fillStyle = "#000";
-context.fillRect(0, 0, canvas.width, canvas.height);
+
 
 const tetrominoS = [
     [0, 0, 0],
@@ -34,11 +33,16 @@ function drawPiece(tetromino, offset) {
     });
 }
 
-function draw() {
+function draw() { 
+    context.fillStyle = "#000";
+    context.fillRect(0, 0, canvas.width, canvas.height);
     drawPiece(player.tetromino, player.pos);
 }
 
-function update() {
+let prevTime = 0;
+function update(time = 0) {
+    const elapsedTime = time - prevTime;
+    prevTime = time;
     draw();
     requestAnimationFrame(update);
 }
