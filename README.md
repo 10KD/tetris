@@ -1,8 +1,8 @@
-# Tetris reloaded - an 8bit classic remade in html 5
+# Tetrix reloaded - an 8bit classic remade in html 5
 
 ## Overview
 
-Tetris reloaded is the classic tetris game updated to take advantage of html 5 and react.
+Tetrix reloaded is the classic tetris game updated to take advantage of html 5 and react.
 
 Users are given tetris pieces of various shapes and must find a way to stack them in a row.
 When a row is formed that row is deleted and the user may continue playing.
@@ -44,20 +44,28 @@ create canvas and display pieces on it.
 Write a update function that conitinually updates the canvas. Use `requestAnimationFrame()`.
 Determine the speed at which the pieces will drop and ramp up that speed by measuring the time between frames and
 increasing the y axis of the piece when time exceeds the desired interval between each drop.
-Enable keyboard controls using `EventListener` with keyboard keycodes. 
+Enable keyboard controls using `EventListener` with keyboard keycodes.
 
 **Day 3**
 
-finish piece logic and wrap up game logic
+Create a function to detect collisions by first making a matrix of arrays that represents the canvas, updating it with the
+canvas values, then comparing it againt the piece position and returning a boolean indicating whether or not the desired move is valid.
+Crete another function to handle rotating the pieces. I plan on doing this by tranposing the values of the piece array.
+Account for edge cases with the rotation like rotating into the side wall of the game.
+Modify the draw function to draw the pieces from previous turns by referencing the game matrix.
 
 **Day 4**
 
-finish game logic, spend time on css making things fun
+Create a function to produce a random piece each turn and display it while the previous piece is still in play.
+Create a function to calculate the score. Points should multiply depending on how many rows disappear in one turn.
+Create a function that deletes the correct row(s) when a full row is populated with tetris pieces.
+Handle gameover logic. Reset the game if any part of the top row of the matrix has a piece (value) stored in it.
+Add css. Color pieces, create slick lines for canvas box, score board and preview box.
 
 ## Bonus
 
 enable mousepad controls
 
-alternate game modes
+enable matrix mode - refactor in three.js to draw in 3d then rotate the camera for different view of the game if certain conditions are met
 
 compete against AI
