@@ -49,9 +49,9 @@ Enable keyboard controls using `EventListener` with keyboard keycodes.
 **Day 3**
 
 Create a function to detect collisions by first making a matrix of arrays that represents the canvas, updating it with the
-canvas values, then comparing it againt the piece position and returning a boolean indicating whether or not the desired move is valid.
-Crete another function to handle rotating the pieces. I plan on doing this by tranposing the values of the piece array.
-Account for edge cases with the rotation like rotating into the side wall of the game.
+canvas values, then comparing it against the piece position and returning a boolean indicating whether or not the desired move is valid.
+Create another function to handle rotating the pieces. I plan on doing this by transposing the values of the piece array.
+Account for edge cases with the rotation, like rotating into the side wall of the game.
 Modify the draw function to draw the pieces from previous turns by referencing the game matrix.
 
 **Day 4**
