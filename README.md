@@ -69,3 +69,7 @@ enable mousepad controls
 enable matrix mode - refactor in three.js to draw in 3d then rotate the camera for different view of the game if certain conditions are met
 
 compete against AI
+
+
+
+

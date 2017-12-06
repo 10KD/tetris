@@ -13,7 +13,7 @@ const tetrominoS = [
 
 const player = {
     tetromino: tetrominoS,
-    pos: { x: 3, y: -3 },
+    pos: { x: 4, y: -3 },
 };
 
 
@@ -32,7 +32,14 @@ function drawPiece(tetromino, offset) {
         );
     });
 }
-
+function createMatrix(width, height) {
+    const matrix = [];
+    while (height) {
+        matrix.push(new Array(width).fill(0));
+        height--;
+    }
+    return matrix;
+}
 
 function draw() { 
     context.fillStyle = "#000";
@@ -59,6 +66,20 @@ function update(time = 0) {
     requestAnimationFrame(update);
 }
 
+const matrix = createMatrix(12, 20);
+
+function merge(arena, user) {
+    user.tetromino.forEach((row, y) => {
+        row.forEach((value, x) => {
+            arena[y + user.pos.y][x + user.pos.x] = value;
+        });
+    });
+}
+
+// function collision(arena, user) {
+//     const [anotherMatrix, offset] = [user.tetromino, user.pos];
+
+// }
 
 
 document.addEventListener('keydown', e => {
