@@ -7,13 +7,13 @@ context.scale(30, 30);
 
 const tetrominoS = [
     [0, 0, 0],
-    [0, 1, 1],
-    [1, 1, 0]
+    [1, 1, 0],
+    [0, 1, 1]
 ];
 
 const player = {
     tetromino: tetrominoS,
-    pos: { x: 4, y: -3 },
+    pos: { x: 4, y: 0 },
 };
 
 
@@ -24,7 +24,7 @@ function drawPiece(tetromino, offset) {
                     context.fillStyle = "#33cc33";
                     context.fillRect(
                         x + offset.x, 
-                        y + offset.y, 
+                        (y - 3) + offset.y, 
                         1, 1
                     );
                 }
@@ -32,6 +32,7 @@ function drawPiece(tetromino, offset) {
         );
     });
 }
+
 function createMatrix(width, height) {
     const matrix = [];
     while (height) {
@@ -44,20 +45,17 @@ function createMatrix(width, height) {
 function draw() { 
     context.fillStyle = "#000";
     context.fillRect(0, 0, canvas.width, canvas.height);
+    drawPiece(matrix, { x: 0, y: 0 });
     drawPiece(player.tetromino, player.pos);
 }
 
 let dropCounter = 0;
-function drop() {
-    player.pos.y += 1;
-    dropCounter = 0;
-}
-let intervalInMs = 300;
+let intervalInMs = 1000;
 let prevTime = 0;
 function update(time = 0) {
     const elapsedTime = time - prevTime;
     prevTime = time;
-
+    
     dropCounter += elapsedTime;
     if (dropCounter > intervalInMs) {
         drop();
@@ -66,31 +64,78 @@ function update(time = 0) {
     requestAnimationFrame(update);
 }
 
-const matrix = createMatrix(12, 20);
+const matrix = createMatrix(12, 23);
 
+function drop() {
+    player.pos.y += 1;
+    if (collision(matrix, player)) {
+        player.pos.y -= 1;
+        merge(matrix, player);
+        player.pos.y = 0;
+        player.pos.x = 4;
+    }
+    dropCounter = 0;
+}
 function merge(arena, user) {
     user.tetromino.forEach((row, y) => {
         row.forEach((value, x) => {
-            arena[y + user.pos.y][x + user.pos.x] = value;
+            if (arena[y + user.pos.y][x + user.pos.x] === 0) {
+                arena[y + user.pos.y][x + user.pos.x] = value;
+             }
         });
     });
 }
 
-// function collision(arena, user) {
-//     const [anotherMatrix, offset] = [user.tetromino, user.pos];
+function collision(arena, user) {
+    const [tetromino, pos] = [user.tetromino, user.pos];
+    for (let y = 0; y < tetromino.length; y++) {
+        const row = tetromino[y];
+        for (let x = 0; x < row.length; x++) {
+            const element = row[x];
+            if (element !== 0 && 
+                (arena[y + pos.y] && 
+                    arena[y + pos.y][x + pos.x]) !== 0) {
+                    return true;
+                }
+            } 
+        }
+        return false;
+}
 
-// }
+function move(direction) {
+    player.pos.x += direction;
+    if (collision(matrix, player)) {
+        player.pos.x -= direction;
+    }
+}
 
+function rotate(piece, direction) {
+    for (let y = 0; y < piece.length; y++) {
+       for (let x = 0; x < y; x++) {
+           [piece[x][y], piece[y][x]] = [piece[y][x], piece[x][y]];
+       }   
+    }
+
+    if (direction > 0) {
+        piece.forEach(row => row.reverse());
+    } else {
+        piece.reverse;
+    }
+}
+
+function rotatePiece(direction) {
+    rotate(player.tetromino, direction);
+}
 
 document.addEventListener('keydown', e => {
     if (e.keyCode === 37) {
-        player.pos.x -= 1;
+        move(-1);
     } else if (e.keyCode === 39) {
-        player.pos.x += 1;
+        move(1);
     } else if (e.keyCode === 40) {
         drop();
     } else if (e.keyCode === 38 || e.keyCode === 69) {
-        console.log(e.keyCode);
+        rotatePiece(1);
     }
 })
 
