@@ -50,7 +50,7 @@ function draw() {
 }
 
 let dropCounter = 0;
-let intervalInMs = 1000;
+let intervalInMs = 32;
 let prevTime = 0;
 function update(time = 0) {
     const elapsedTime = time - prevTime;
@@ -124,7 +124,19 @@ function rotate(piece, direction) {
 }
 
 function rotatePiece(direction) {
+    let xPos = player.pos.x;
     rotate(player.tetromino, direction);
+    let offset = 1;
+    while (collision(matrix, player)) {
+        player.pos.x += offset;
+        offset = -(offset + (offset > 0 ? 1 : -1));
+        if (offset > player.tetromino.length) {
+            player.pos.x = xPos;
+            rotate(player.tetromino, -direction);
+            return;
+
+        }
+    }
 }
 
 document.addEventListener('keydown', e => {
@@ -136,6 +148,8 @@ document.addEventListener('keydown', e => {
         drop();
     } else if (e.keyCode === 38 || e.keyCode === 69) {
         rotatePiece(1);
+    } else if (e.keyCode === 32) {
+        console.log("nope");
     }
 })
 
