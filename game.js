@@ -93,7 +93,7 @@ function drawPiece(tetromino, offset) {
         row.forEach((value, x) => {
                 if (value !== 0) {
                     context.fillStyle = colors[value];
-                    context.strokeStyle='#000';
+                    context.strokeStyle='black';
                     context.lineWidth=0.1;
                     context.fillRect(
                         x + offset.x, 
@@ -122,7 +122,7 @@ function createMatrix(width, height) {
 }
 
 function draw() { 
-    context.fillStyle = "#000";
+    context.fillStyle = "black";
     context.fillRect(0, 0, canvas.width, canvas.height);
     drawPiece(matrix, { x: 0, y: 0 });
     drawPiece(player.tetromino, player.pos);
