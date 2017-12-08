@@ -82,6 +82,7 @@ function reset() {
         matrix.forEach(row => row.fill(0));
         player.score = 0;
         setScore();
+        startTime = Date.now();
     }
 }
 
