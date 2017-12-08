@@ -32,7 +32,38 @@ body {
     top: 420;
     font-size: 12;
     align-self: flex-start;
+    margin-left: 5px;
     /* background-color: yellow; */
+}
+
+.pause, .play {
+    font-size: 12;
+    align-self: flex-start;
+    margin-left: 5px;
+    position: absolute;
+    color: #ffff33;
+    background-color: black;
+    border: none;
+    font-size: 12;
+    font-family: inherit;
+    margin: 0;
+    padding: 0px 5px;
+}
+
+.pause:hover, .play:hover {
+    cursor: pointer;
+}
+
+.pause:focus, .play:focus {
+    outline: 0;
+}
+
+.pause {
+    top: 320;
+}
+
+.play {
+    top: 298;
 }
 
 .title {
@@ -49,6 +80,7 @@ body {
     top: 100;
     /* width: 176; */
     /* font-size: 24px; */
+    margin-left: 5px;
     padding-bottom: 15px;
     color: #ffff33;
     border-bottom: 3px solid forestgreen;

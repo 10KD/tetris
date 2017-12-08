@@ -67,6 +67,14 @@ const colors = [
 
 const pieceStr = "LISZTO";
 function reset() {
+    intervalInMs = 320;
+    let currTime = Date.now();
+    let timeDiff = currTime - startTime;
+    if (timeDiff > 135000) {
+        intervalInMs = 80;
+    } else if (timeDiff > 45000) {
+        intervalInMs = 160;
+    }
     player.tetromino = createPiece(pieceStr[Math.floor(pieceStr.length * Math.random())]);
     player.pos.y = 0;
     player.pos.x = 4;
@@ -252,8 +260,8 @@ document.addEventListener('keydown', e => {
     } else if (e.keyCode === 38 || e.keyCode === 69) {
         rotatePiece(1);
     } else if (e.keyCode === 32) {
-        console.log("nope");
+       intervalInMs = 32;
     }
 });
-
+const startTime = Date.now();
 update();

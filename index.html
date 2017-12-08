@@ -21,6 +21,15 @@
                 <i class="arrow down"></i>
             </p>
         </div>
+        <audio id="player" autoplay>
+            <source src="traptris.mp3" type="audio/mpeg"> Your browser does not support the audio tag.
+        </audio>
+        <button class="play"
+         onclick="document.getElementById('player').play()">♫ play ♫
+        </button>
+        <button class="pause"
+         onclick="document.getElementById('player').pause()">♫ pause ♫
+        </button>
         <div class="title">Tetrix: RELOADED</div>
         <canvas
         id="tetrix"
