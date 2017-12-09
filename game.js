@@ -71,7 +71,7 @@ function reset() {
     let currTime = Date.now();
     let timeDiff = currTime - startTime;
     if (timeDiff > 135000) {
-        intervalInMs = 80;
+        intervalInMs = 120;
     } else if (timeDiff > 45000) {
         intervalInMs = 160;
     }
@@ -264,5 +264,5 @@ document.addEventListener('keydown', e => {
        intervalInMs = 32;
     }
 });
-const startTime = Date.now();
+let startTime = Date.now();
 update();
